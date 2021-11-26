@@ -1,28 +1,27 @@
 <?php
-session_start();
+require 'inc/head.php';
 require 'inc/data/products.php';
-if(empty($_SESSION['loginname'])) {
-    header("Location: login.php");
-}
+require 'connect.php';
 ?>
-<?php require 'inc/head.php'; ?>
+<section class="cookies container-fluid">
+    <div class="row">
 
-    <section class="cookies container-fluid">
-        <div class="row">
-            <div class="products">
-
-                <?php if(!empty($_SESSION['cookies'])) { ?>
-                    Mon panier :
-                    <ul>
-                        <?php $cookies= $_SESSION['cookies'];
-                        foreach($cookies as $id => $count) {
-                            $cookieName= $catalog[$id]['name'];?>
-                            <li><?= $count.' '.$cookieName ?></li>
-                        <?php } ?>
-                    </ul>
-
+        <div class="products">
+            <?php if(isset($_SESSION['cookies']));?>
+            <ul>
+                <?php $cookies = $_SESSION['cookies'];
+                foreach ($cookies as $id => $count){
+                    $cookieName = $catalog[$id]['name'];?>
+                    <li><?= $count . ' - '. $cookieName ?> </li>
                 <?php } ?>
-            </div>
+            </ul>
+
         </div>
-    </section>
+    </div>
+</section>
 <?php require 'inc/foot.php'; ?>
+
+
+
+
+

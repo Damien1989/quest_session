@@ -1,10 +1,11 @@
-<?php
-session_start();
-if (isset($_POST['loginname'])){
-    $_SESSION['loginname'] = $_POST['loginname'];
-    header("location: index.php");
+<?php require 'inc/head.php';
+
+if (!empty($_POST['loginname'])){
+    $_SESSION['login'] = $_POST['loginname'];
+    header ('location: /');
+    exit();
 }
-require 'inc/head.php'; ?>
+?>
 <div class="container" style="margin-top:40px">
     <div class="row">
         <div class="col-sm-6 col-md-4 col-md-offset-4">
@@ -29,7 +30,7 @@ require 'inc/head.php'; ?>
                                             <span class="input-group-addon">
                                               <i class="glyphicon glyphicon-user"></i>
                                             </span>
-                                            <input class="form-control" placeholder="Username" name="loginname"
+                                            <input class="form-control" placeholder="Username" name="username"
                                                    type="text" autofocus>
                                         </div>
                                     </div>

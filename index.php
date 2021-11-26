@@ -1,19 +1,16 @@
 <?php
-session_start();
 require 'inc/data/products.php';
+require 'inc/head.php';
 
-if(!empty($_GET['add_to_cart'])) {
-    $id=$_GET['add_to_cart'];
-    if (empty($_SESSION['cookies'][$id])) {
-        $_SESSION['cookies'][$id]=1;
+if (isset($_GET['add_to_cart'])){
+    $id = $_GET['add_to_cart'];
+    if (empty($_SESSION['cookies']['$id'])){
+        $_SESSION['cookies'][$id] = 1;
     } else {
-        $_SESSION['cookies'][$id]++;
+        $_SESSION['cookies']['id'] +=1;
     }
 }
 ?>
-<?php
-require 'inc/head.php'; ?>
-
 <section class="cookies container-fluid">
     <div class="row">
         <?php foreach ($catalog as $id => $cookie) { ?>
